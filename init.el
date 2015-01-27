@@ -32,6 +32,19 @@
 (dolist (file (directory-files defuns-dir t "\\w+"))
   (when (file-regular-p file)
       (load file)))
+;;lgh
+(require 'eieio-opt)
+;; cedet
+(setq ecb-version-check nil)
+(require 'cedet)
+(require 'semantic)
+;(semantic-load-enable-code-helpers)
+;##ecb(Emacs Code Browser);;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'ecb)
+(setq ecb-tip-of-the-day nil) 
+;(require 'ecb-autoloads)
+(setq stack-trace-on-error t)
+
 ;----------------------------------------------------------------------------
 ; Load configs for specific features and modes
 ;----------------------------------------------------------------------------
@@ -166,6 +179,26 @@
                              init-emacs-w3m
                              init-semantic))
 (idle-require-mode 1) ;; starts loading
+
+;;lgh
+;(setq stack-trace-on-error t)
+;(setq ecb-auto-activate t);\u81ea\u52a8\u542f\u52a8ecb
+(global-set-key [f8] 'ecb-activate) ;;\u5b9a\u4e49F8\u952e\u4e3a\u6fc0\u6d3becb
+(global-set-key [f7] 'ecb-deactivate) ;;\u5b9a\u4e49F7\u4e3a\u505c\u6b62ecb
+;;;; \u5404\u7a97\u53e3\u95f4\u5207\u6362
+(global-set-key [M-left] 'windmove-left)
+(global-set-key [M-right] 'windmove-right)
+(global-set-key [M-up] 'windmove-up)
+(global-set-key [M-down] 'windmove-down)
+;;;; \u4f7f\u67d0\u4e00ecb\u7a97\u53e3\u6700\u5927\u5316
+;(define-key global-map "\C-c1" 'ecb-maximize-window-directories)
+;(define-key global-map "\C-c2" 'ecb-maximize-window-sources)
+;(define-key global-map "\C-c3" 'ecb-maximize-window-methods)
+;(define-key global-map "\C-c4" 'ecb-maximize-window-history)
+;;;; \u6062\u590d\u539f\u59cb\u7a97\u53e3\u5e03\u5c40
+;(define-key global-map "\C-c`" 'ecb-restore-default-window-sizes)
+
+
 
 ;;----------------------------------------------------------------------------
 ;; Variables configured via the interactive 'customize' interface
